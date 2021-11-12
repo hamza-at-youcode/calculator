@@ -36,6 +36,21 @@ float _div(){
     else printf("Result: %0.2f / %0.2f = %0.2f",a,b,a/b);
 }
 
+void toBin(int nbr){
+    int t[20],tmp = nbr;
+    int i = 0,j;
+    do
+    {
+        t[i] = nbr%2;
+        nbr = nbr/2;
+        i++;
+    } while (nbr != 0);
+    printf("\n(%d)dec = (",tmp);
+    for (j = i-1; j >= 0; j--) printf("%d",t[j]);
+    printf(")bin.\n");
+    
+}
+
 float mul(){
     float a,m = 1;
     printf("Enter 1 to end!\n");
@@ -52,13 +67,15 @@ int main(){
     printf("\nWelcome to youCode calc\n");
     char ch;
     float a = 0,b = 0;
+    int dec = 0; 
     
     do{
         printf("\n\t***** Menu *****\n");
-        printf("+ for addition.\n");
-        printf("- for subtraction.\n");
-        printf("* for multiplication.\n");
-        printf("/ for division.\n");
+        printf("+: for addition.\n");
+        printf("-: for subtraction.\n");
+        printf("*: for multiplication.\n");
+        printf("/: for division.\n");
+        printf("b: for binary conversion.\n");
         printf("\n >");
         ch = getch();
         printf("\n");
@@ -75,6 +92,11 @@ int main(){
             break;
         case '/':
             _div();
+            break;
+        case 'b':
+            printf("Enter a decimal number: ");
+            scanf("%d",&dec);
+            toBin(dec);
             break;
         case '0':exit(0);
         default:
